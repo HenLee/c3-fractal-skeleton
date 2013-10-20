@@ -23,8 +23,8 @@ void Mandelbrot::gen_fractal()
         {
             // Initialize counter, real coordinate base_c_r, and imaginary coordinate base_c_i
             int iter_count;
-            double base_c_r = 3.5 * i / m_width - 2.5;		// Tests real coordinates between -2.5 and 1
-            double base_c_i = 2.0 * j / m_height - 1.0;		// Tests imaginary coordinates between -1 and 1
+            double base_c_r = 3.0 * i / m_width - 2.25;		// Tests real coordinates between -2.25 and 0.75
+            double base_c_i = 3.0 * j / m_height - 1.5;		// Tests imaginary coordinates between -1.5 and 1.5
 
 			// Initialize color sums
 			int red_sum = 0, green_sum = 0, blue_sum = 0;
@@ -50,9 +50,9 @@ void Mandelbrot::gen_fractal()
 						z_i = 2 * z_r * z_i + c_i;
 						z_r = z_temp;
 					}
-					
+
 					// If escaped to infinity, add colors to color sums
-					if (iter_count < MAX_ITER)		
+					if (iter_count < MAX_ITER)
 					{
 						// Normalize iterations for better approximation of the rate at which a point reaches infinity
 						double norm_iter_count = log(iter_count + 1 - log(0.5 * log(z_r * z_r + z_i * z_i)) / log(2));
