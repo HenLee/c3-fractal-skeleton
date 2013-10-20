@@ -10,9 +10,9 @@
 using namespace std;	
 
 
-const int MAXITER = 1000;
-const int SUBSAMPLING = 20;
-const int COLORQUANTITY = 5;
+const int MAX_ITER = 1000;
+const int SUBSAMPLE_RADIUS = 1;
+const int COLOR_QUANTITY = 4;
 
 class Fractal
 {
