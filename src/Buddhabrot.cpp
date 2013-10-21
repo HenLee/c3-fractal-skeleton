@@ -9,13 +9,13 @@ void Buddhabrot::gen_fractal()
 	// Imaginary (-1, 1)
     
     // Initialize a bucket array (one integer for each pixel) (this is the outer bucket array)
-	int outer[width*height];
+	int outer[m_width*m_height];
     // iterate over the following several thousand times (at least more times than # of pixels)
   	for( int j = 0; j < 10000; j++ )
   	{
         // Create a temporary bucket array (one integer for each pixel
         //
-        	int temp[width*height];
+        	int temp[m_width*m_height];
      
         // Let C be a random point in the complex plane
         //
@@ -42,7 +42,7 @@ void Buddhabrot::gen_fractal()
   		}
         // Else, merge the temporary bucket with the outer bucket array
         	outer[pz_i*m_width + pz_r*m_height] = temp[pz_i*m_width + pz_r*m_height];
-  	 }
+  	}
      // Normalize the global bucket array by dividing each value by the maximum value
      // Color each pixel however you wish
      //
