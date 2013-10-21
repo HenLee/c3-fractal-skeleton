@@ -7,15 +7,16 @@ void Buddhabrot::gen_fractal()
    
 	// Real (-2.5, 1)
 	// Imaginary (-1, 1)
-    
+	int k;
+    int h;
     // Initialize a bucket array (one integer for each pixel) (this is the outer bucket array)
-	int outer[m_width*m_height];
-    // iterate over the following several thousand times (at least more times than # of pixels)
+	int *outer = ( int *)malloc(m_height*m_width*4*sizeof( int));
+	// iterate over the following several thousand times (at least more times than # of pixels)
   	for( int j = 0; j < 10000; j++ )
   	{
         // Create a temporary bucket array (one integer for each pixel
         //
-        	int temp[m_width*m_height];
+        	int *temp = ( int *)malloc(m_height*m_width*4*sizeof( int));
      
         // Let C be a random point in the complex plane
         //
@@ -32,7 +33,9 @@ void Buddhabrot::gen_fractal()
 	       		z_r = z_temp;
 	       		int pz_i = (1 + z_i) * m_height / 2;
 	       		int pz_r = (2.5 + z_r) * m_width / 3.5;
-	       		temp[pz_i*m_width = z_r*m_height] += 1;
+				k = pz_i;
+				h = pz_r;
+	       		temp[pz_i*m_width + pz_r*m_height] += 1;
         // If Z is in the mandelbrot set, discard the temporary bucket
        			if( pow(z_r,2) + pow(z_i,2) >= 4 )
        			{
@@ -41,8 +44,10 @@ void Buddhabrot::gen_fractal()
        			}
   		}
         // Else, merge the temporary bucket with the outer bucket array
-        	outer[pz_i*m_width + pz_r*m_height] = temp[pz_i*m_width + pz_r*m_height];
+        	outer[k*m_width + h*m_height] = temp[k*m_width + h*m_height];
+			delete [] temp;
   	}
+	delete [] outer;
      // Normalize the global bucket array by dividing each value by the maximum value
      // Color each pixel however you wish
      //
@@ -54,4 +59,3 @@ void Buddhabrot::gen_fractal()
 
 }
     
-
