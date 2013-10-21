@@ -11,8 +11,6 @@ void Buddhabrot::gen_fractal()
     // Initialize a bucket array (one integer for each pixel) (this is the outer bucket array)
 	int outer[width*height];
     // iterate over the following several thousand times (at least more times than # of pixels)
-        	double z_r = 0, z_i = 0;
-        	double z_temp;
   	for( int j = 0; j < 10000; j++ )
   	{
         // Create a temporary bucket array (one integer for each pixel
@@ -25,6 +23,8 @@ void Buddhabrot::gen_fractal()
 		double c_i = rand() * ( 1.0 + 1.0 ) / RAND_MAX + -1.0;
         	
         // Trace the orbit of C, incrementing the temporary bucket that z falls in for each iteration
+        	double z_r = 0, z_i = 0;
+        	double z_temp;
         	z_temp = pow(z_r,2) - pow(z_i,2) + c_r;
        		z_i = z_r*z_i*2 + c_i;
        		z_r = z_temp;
