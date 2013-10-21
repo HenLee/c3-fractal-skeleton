@@ -23,7 +23,8 @@ void Buddhabrot::gen_fractal()
      
         // Let C be a random point in the complex plane
         //
-        		double c_r = (rand()%3.5) - 2.5, c_i = (rand()%2) - 1;
+			double c_r = rand() * ( 1.0 + 2.5 ) / RAND_MAX + -2.5;
+			double c_i = rand() * ( 1.0 + 1.0 ) / RAND_MAX + -1.0;
         		z_temp = pow(z_r,2) - pow(z_i,2) + c_r;
         		z_i = z_r*z_i*2 + c_i;
         		z_r = z_temp;
