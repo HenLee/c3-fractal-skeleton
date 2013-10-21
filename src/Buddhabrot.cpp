@@ -23,20 +23,26 @@ void Buddhabrot::gen_fractal()
 		double c_i = rand() * ( 1.0 + 1.0 ) / RAND_MAX + -1.0;
         	
         // Trace the orbit of C, incrementing the temporary bucket that z falls in for each iteration
-        	double z_r = 0, z_i = 0;
-        	double z_temp;
-        	z_temp = pow(z_r,2) - pow(z_i,2) + c_r;
-       		z_i = z_r*z_i*2 + c_i;
-       		z_r = z_temp;
-       		temp[z_i*z_r] += 1;
+        	for( int i = 0; i < 10000; i++ )
+        	{
+	        	double z_r = 0, z_i = 0;
+	        	double z_temp;
+	        	z_temp = pow(z_r,2) - pow(z_i,2) + c_r;
+	       		z_i = z_r*z_i*2 + c_i;
+	       		z_r = z_temp;
+	       		int pz_i = (1 + z_i) * m_height / 2;
+	       		int pz_r = (2.5 + z_r) * m_width / 3.5;
+	       		temp[pz_i*m_width = z_r*m_height] += 1;
         // If Z is in the mandelbrot set, discard the temporary bucket
-       		if( pow(z_r,2) + pow(z_i,2) >= 4 )
-       			temp[z_i*z_r] = 0;
-       			
+       			if( pow(z_r,2) + pow(z_i,2) >= 4 )
+       			{
+       				temp[pz_i*m_width + pz_r*m_height] = 0;
+       				break;
+       			}
+  		}
         // Else, merge the temporary bucket with the outer bucket array
-        	else
-        		outer[z_i*z_r] = temp[z_i*z_r];
-  	}
+        	outer[pz_i*m_width + pz_r*m_height] = temp[pz_i*m_width + pz_r*m_height];
+  	 }
      // Normalize the global bucket array by dividing each value by the maximum value
      // Color each pixel however you wish
      //
