@@ -47,8 +47,15 @@ void Buddhabrot::gen_fractal()
         	outer[k*m_width + h*m_height] = temp[k*m_width + h*m_height];
 			delete [] temp;
   	}
-	delete [] outer;
      // Normalize the global bucket array by dividing each value by the maximum value
+        int largest = 0;
+        for( int a = 0; a < sizeof(outer); i++ )
+        {
+        	if( outer[i] > largest )
+        		largest = outer[i];
+        }
+        for( int b = 0; b < sizeof(outer); b++ )
+        	outer[b] = outer[b] / largest;
      // Color each pixel however you wish
      //
      // Parallelizing this function is tricky. It helps to have a list of temporary bucket arrays
@@ -56,6 +63,6 @@ void Buddhabrot::gen_fractal()
      
      // Parallelizing is not required, but will save you a lot of time.
      
-
+	delete [] outer;
 }
     
