@@ -9,17 +9,18 @@ void Buddhabrot::gen_fractal()
 	// Imaginary (-1, 1)
     
     // Initialize a bucket array (one integer for each pixel) (this is the outer bucket array)
-	int outer[sizeof(m_bitmap)];
+	int outer[width*height];
 	int n;
     // iterate over the following several thousand times (at least more times than # of pixels)
 	for( int i = 0; i <= sizeof(outer); i++)
 	{
         	double z_r = 0, z_i = 0;
         	double z_temp;
-  		for( int j = 0; j < 100000; j++ )
+  		for( int j = 0; j < 10000; j++ )
   		{
         // Create a temporary bucket array (one integer for each pixel
         //
+        		int temp[];
      
         // Let C be a random point in the complex plane
         //
