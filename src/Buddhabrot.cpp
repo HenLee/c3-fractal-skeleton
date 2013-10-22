@@ -46,7 +46,7 @@ void Buddhabrot::gen_fractal()
   		}
 		// If Z is in the mandelbrot set, discard the temporary bucket
 		// Else, merge the temporary bucket with the outer bucket array
-		if (i < 10000)
+		if (i < 1000)
 		{
 			for (int i = 0; i < m_width * m_height; i++)
         		outer[i] += temp[i];
