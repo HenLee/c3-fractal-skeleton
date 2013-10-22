@@ -2,6 +2,7 @@
 #include <time.h>
 #include <cstdlib>
 #include "Mandelbrot.h"
+#include "Buddhabrot.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -29,12 +30,24 @@ int main(int argc, char *argv[])
 	cout << "Fractal Allocated" << endl;
 
     // Generate the fractal
-    my_fractal.gen_fractal();
-    cout << "Fractal Created" << endl;
+    	my_fractal.gen_fractal();
+    	cout << "Fractal Created" << endl;
     
     // Save the fractal to a file
 	my_fractal.save_file(str);
-    cout << "Fractal Saved to file" << endl;
+    	cout << "Fractal Saved to file" << endl;
+    
+    // Create a fractal object
+	Buddhabrot myfractal(a);
+	cout << "Fractal Allocated" << endl;
+
+    // Generate the fractal
+    	myfractal.gen_fractal();
+    	cout << "Fractal Created" << endl;
+    
+    // Save the fractal to a file
+	myfractal.save_file(str);
+    	cout << "Fractal Saved to file" << endl;
     
     if (argc < 3)
     {
