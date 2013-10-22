@@ -1,0 +1,1 @@
+Program determines size of fractal image by passing in arguments when running the program. To change between Mandelbrot and Buddhabrot, manually alter the code in fractalgen.cpp so that any occurrence of Buddhabrot (including the #include statement) is replaced with Mandelbrot, and vice versa.
